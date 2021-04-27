@@ -5,7 +5,7 @@ Ogni oggetto descriverà una bici da corsa con le seguenti proprietà: nome e pe
 Stampare a schermo la bici con peso minore utilizzando destructuring e template literal
 */
 
-let bikes = [
+const bikes = [
     { name: "Cannondale", weight: 13 },
     { name: "Wilier", weight: 11 },
     { name: "Trek", weight: 18 },
@@ -16,7 +16,7 @@ let bikes = [
 ]
 console.log(bikes);
 
-let maxWeight = 1000;
+/*let maxWeight = 1000;
 let lightBike = 0;
 
 for (let i = 0; i < bikes.length; i++) {
@@ -33,9 +33,29 @@ const bikeChoice = bikes[lightBike];
 
 const { name, weight } = bikeChoice;
 
+//template literal
+console.log(`La Bike più leggera tra quelle contenute all'St.Francisno dell'Array è la ${name} con un peso di ${weight} Kg!`);*/
 
-console.log(`La Bike più leggera tra quelle contenute all'St.Francisno dell'Array è la ${name} con un peso di ${weight} Kg!`);
 
+const findLighterBike = (arrayList) => {
+    let lighterBike;
+
+    for (let i = 0; i < arrayList.length; i++) {
+        const {name, weight } = arrayList[i]
+
+        if(!lighterBike || weight < lighterBike.weight) {
+            lighterBike = {
+                name,
+                weight
+            }
+        }
+    }
+    return lighterBike;
+}
+
+const foundLighterBike = findLighterBike(bikes);
+
+console.log(foundLighterBike);
 
 //js-snack-2
 /*Creare un array di oggetti di squadre di calcio. Ogni newTeam avrà diverse proprietà: nome, punti fatti, falli subiti. Nome sarà l’unica proprietà da compilare, le altre saranno tutte settate a 0. Generare numeri random al posto degli 0 nelle proprietà: Punti fatti e falli subiti.
@@ -70,7 +90,7 @@ var nuovoArraySquadre = [];
 for (var i = 0; i < newTeam.length; i++) {
     const { nome, falliSubiti } = newTeam[i]
 
-    nuovoArraySquadre.push({nome, falliSubiti });
+    nuovoArraySquadre.push({ nome, falliSubiti });
 }
 
 console.log(nuovoArraySquadre);
